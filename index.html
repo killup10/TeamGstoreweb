@@ -2,7 +2,7 @@
 <html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=3.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TeamG Store</title>
     <style>
         body {
@@ -12,20 +12,49 @@
             margin: 0;
             padding: 0;
             text-align: center;
+            position: relative;
+            z-index: 1;
         }
+
+        /* Contenedor del video de fondo */
+        .video-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100vw;
+            height: 100vh;
+            overflow: hidden;
+            z-index: -1;
+        }
+
+        /* Configuración del video */
+        .video-container video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: blur(5px) brightness(50%);
+        }
+
         header {
-            background-color: #242526;
+            background-color: rgba(36, 37, 38, 0.8); /* Fondo semitransparente */
             padding: 20px;
             font-size: 24px;
+            position: relative;
         }
+
         .logo {
-            max-width: 150px;
+            max-width: 200px;
             height: auto;
             margin-bottom: 10px;
         }
+
         section {
             padding: 20px;
+            background-color: rgba(24, 25, 26, 0.8);
+            border-radius: 10px;
+            margin: 20px;
         }
+
         .button {
             background-color: #1877F2;
             color: white;
@@ -35,22 +64,26 @@
             border-radius: 5px;
             margin: 10px;
         }
+
         img {
             max-width: 100%;
             height: auto;
             border-radius: 10px;
             margin-top: 20px;
         }
+
         .testimonios {
-            background-color: #242526;
+            background-color: rgba(36, 37, 38, 0.8);
             padding: 20px;
             border-radius: 10px;
             margin: 20px;
         }
+
         .testimonio {
             margin-bottom: 15px;
             font-style: italic;
         }
+
         .theme-toggle {
             position: fixed;
             top: 10px;
@@ -61,7 +94,9 @@
             border: none;
             cursor: pointer;
             border-radius: 5px;
+            z-index: 1000;
         }
+
         .light-mode {
             background-color: white;
             color: black;
@@ -69,75 +104,61 @@
     </style>
 </head>
 <body>
+    <!-- Video de fondo -->
+    <div class="video-container">
+        <video autoplay loop muted>
+            <source src="https://dl.dropboxusercontent.com/scl/fi/6wjh8xbq2mbbskfjwg7dg/videoteamg.mp4?rlkey=nxg614bwooh99whyt6rm7249t" type="video/mp4">
+            Tu navegador no soporta videos en HTML5.
+        </video>
+    </div>
 
-  <!-- Video de fondo -->
-    <video autoplay loop muted class="background-video">
-        <source src="https://dl.dropboxusercontent.com/scl/fi/6wjh8xbq2mbbskfjwg7dg/videoteamg.mp4?rlkey=nxg614bwooh99whyt6rm7249t" type="video/mp4">
-        Tu navegador no soporta videos en HTML5.
-    </video>
     <button class="theme-toggle" onclick="toggleTheme()">Modo Claro/Oscuro</button>
+
     <header>
         <img src="https://dl.dropboxusercontent.com/scl/fi/x5pin3oe2zp9zepmo0d83/sa.png?rlkey=0dokzcg8ojhkoeqqxbdwe42hh" alt="TeamG Store Logo" class="logo">
         <h1>Bienvenido a TeamG Store</h1>
     </header>
+
     <section>
         <h2>Nuestros Servicios</h2>
         <p>OttPlayer, Streaming y más...</p>
         <p>Ofrecemos servicios desde el 2016</p>
     </section>
+
     <section>
         <h2>Nuestros Planes</h2>
         <p>Elige el plan que mejor se adapte a ti.</p>
         <img src="https://dl.dropboxusercontent.com/scl/fi/ir2mytpbvdbiyuc29clta/DE-80-CANALES-EN-VIVO.png?rlkey=1dwinl8yh93hc1cyt4qww07es" alt="Planes de TeamG Store">
     </section>
+
     <section>
         <h2>Canales Disponibles</h2>
         <img src="https://dl.dropboxusercontent.com/scl/fi/yub384h22trxd8knxlpyo/channel2-QG9J2HCD.png?rlkey=dnrcvmbg8ek1ktmpthkqrpiqj" alt="Canales que ofrecemos">
     </section>
+
     <section>
         <h2>Canal Exclusivo</h2>
         <img src="https://dl.dropboxusercontent.com/scl/fi/h64i5p3rcp01k0ap1omjk/liga.png?rlkey=dv6hbh9x4r69vjvd1sf6kt4mu" alt="Canal exclusivo L1MAX">
-        <img src="https://dl.dropboxusercontent.com/scl/fi/9u26nm3k1djr0fbfg83c8/plaksdo.jpg?rlkey=37dvej4oo5j6fwmevw09g2tc0" alt="Más sobre L1MAX">
     </section>
+
     <section>
         <h2>Únete a nuestra comunidad</h2>
         <p>Forma parte de nuestro grupo de clientes en Facebook.</p>
         <a class="button" href="https://www.facebook.com/groups/teamgstor" target="_blank">Grupo de Clientes</a>
     </section>
+
     <section>
         <h2>Contáctanos</h2>
         <p>WhatsApp: <a href="https://wa.me/912194777" target="_blank">912194777</a></p>
         <a class="button" href="https://www.facebook.com/teamgstorperu" target="_blank">Facebook</a>
     </section>
+
     <section>
-        <h2>Formulario de Contacto</h2>
-        <p>Envíanos un mensaje sin salir de la web.</p>
-        <a class="button" href="https://wa.me/912194777" target="_blank">WhatsApp</a>
-        <a class="button" href="https://m.me/teamgstorperu" target="_blank">Messenger</a>
-    </section>
-    <script>
-        function toggleTheme() {
-            document.body.classList.toggle("light-mode");
-        }
-    </script>
-</body>
-</html>
         <h2>Botón de Pago Directo</h2>
         <p>Paga de manera rápida y segura a través de Yape, Plin o PayPal.</p>
         <p>Yape/Plin: <strong>938993594 - Rosa Tirado</strong></p>
     </section>
-    <section>
-        <h2>Experiencia Real</h2>
-        <p>Disfruta del mejor contenido en tu Smart TV con nuestra plataforma.</p>
-        <img src="https://statics.forbesargentina.com/2022/07/62e1574d13664.jpg" alt="Personas viendo Smart TV">
-    </section>
-    <section>
-        <h2>Preguntas Frecuentes (FAQ)</h2>
-        <p><strong>¿Cómo funciona el servicio?</strong></p>
-        <p>Nuestro servicio funciona mediante OttPlayer, una aplicación disponible en todos los dispositivos. Ofrecemos 1 hora de prueba gratuita.</p>
-        <p><strong>¿Qué velocidad de internet necesito?</strong></p>
-        <p>Recomendamos tener al menos 50 Mbps de velocidad en tu conexión de internet para una experiencia óptima.</p>
-    </section>
+
     <section class="testimonios">
         <h2>Testimonios de Clientes</h2>
         <p class="testimonio">"Increíble servicio, nunca falla y la calidad es excelente." - Juan Pérez</p>
@@ -145,6 +166,7 @@
         <p class="testimonio">"Rápido y fácil de usar, lo recomiendo." - Carlos Sánchez</p>
         <p class="testimonio">"El mejor servicio de streaming que he probado." - Ana Torres</p>
     </section>
+
     <script>
         function toggleTheme() {
             document.body.classList.toggle("light-mode");
